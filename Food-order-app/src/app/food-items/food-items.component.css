@@ -1,0 +1,15 @@
+   .foodDiv {
+    display:flex;
+    justify-content: center;
+}
+h1{
+    display:flex;
+    justify-content: center;
+}
+form{display:flex;justify-content: center;}
+table {border: 1px solid;
+    width: 16%;
+    margin: 0 auto;
+    margin-top: 13px;}
+th{ border: 1px solid;}
+td{border: 1px solid;}

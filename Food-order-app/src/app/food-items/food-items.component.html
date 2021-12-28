@@ -1,0 +1,30 @@
+
+<h1>Enter new foodItem</h1>
+
+    
+    <form [formGroup]="itemForm" (ngSubmit)="Add($event)">
+    <label>Item:</label><input type='text' (change)="setItem($event)" formControlName="item" [(ngModel)]="Item"><br>
+    <label>Value:</label><input type='number' (change)="setPrice($event)" formControlName="price"  [(ngModel)]="Price"><br>
+    <button type='submit'>Add Item</button><br>
+</form>
+<table *ngIf="recieps?.length>0">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let el of recieps ">
+            <td>{{el?.data?.item}}</td>
+            <td>{{el?.data?.price}}</td>
+            <td></td>
+            <input type='number' value='0' (input)="getQuantity($event)">
+          
+            <td><button (click)="AddCart(el)">Add Cart</button></td>
+        </tr>
+    </tbody>
+</table>
+  <app-cart [cartitems]="this.cartItems"></app-cart>
+    
