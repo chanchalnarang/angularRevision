@@ -1,5 +1,6 @@
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FoodService } from '../food.service';
 
 @Component({
@@ -13,11 +14,12 @@ Price:any;
 recieps:any;
 cartItems:any=[];
 quantity:number=0;
+Sum:number=0;
 itemForm=new FormGroup({
 item:new FormControl(''),
   price:new FormControl('')
 })
-  constructor(private items:FoodService) {
+  constructor(private items:FoodService,private route:Router) {
     this.getData();
    }
 
@@ -43,12 +45,22 @@ getQuantity(event:any){
 this.quantity=event.target.value
 }
 AddCart(el:any){
-  this.cartItems.push({item:el.data.item,quantity:this.quantity});
+  
+  this.cartItems.push({item:el.data.item,quantity:this.quantity,price:el.data.price,Sum:el.data.price*this.quantity});
   console.log(this.cartItems);
+ let num=el.data.price*this.quantity;
+ this.getTotal(num);
 }
 
-Increment(){
-  this.quantity++;
+getTotal(price:number){
+  
+ this.Sum= this.Sum + price; 
+  console.log(this.Sum ,'amount till now');
+  
+ 
+ }
+ navigate(){
+this.route.navigateByUrl('/restuarants');
  }
 Decrement(){
   this.quantity--;

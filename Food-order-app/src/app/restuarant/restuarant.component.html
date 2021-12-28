@@ -1,0 +1,5 @@
+<p>restuarant works!</p>
+<h1>Popular Restuarants</h1>
+<div *ngFor="let res of restuarants">
+    <a [routerLink]="['/Menu']">{{res.name}}</a>
+</div>

@@ -1,0 +1,1 @@
+export const hotels:any=[{name:'richi rich'},{name:'greenValley'},{name:'IbIS'}]

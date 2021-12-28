@@ -7,7 +7,8 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
- @Input() cartitems:any=[]
+ @Input() cartitems:any=[];
+ @Input() total:any=[]
   constructor() { }
 
   ngOnInit(): void {
