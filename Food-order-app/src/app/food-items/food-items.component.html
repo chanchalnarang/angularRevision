@@ -27,5 +27,6 @@
     </tbody>
 </table>
 <button (click)=navigate()>Restuarant List</button>
-  <app-cart [cartitems]="this.cartItems" [total]="this.Sum"></app-cart>
+
+  <button (click)="goTocart(this.cartItems)">cart</button>
     

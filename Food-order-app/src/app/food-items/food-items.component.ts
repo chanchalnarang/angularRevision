@@ -1,6 +1,7 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { FoodService } from '../food.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class FoodItemsComponent implements OnInit {
 Item:any;
 Price:any;
 recieps:any;
-cartItems:any=[];
+ @Output() senditems=new EventEmitter();
+ cartItems:any=[];
 quantity:number=0;
 Sum:number=0;
 itemForm=new FormGroup({
@@ -51,7 +53,14 @@ AddCart(el:any){
  let num=el.data.price*this.quantity;
  this.getTotal(num);
 }
+goTocart(data:any){
+  console.log('cartitems',data);
+  
+ this.items.sendItem(data,this.Sum);
 
+
+  this.route.navigateByUrl('/cart');
+}
 getTotal(price:number){
   
  this.Sum= this.Sum + price; 
