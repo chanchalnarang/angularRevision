@@ -1,0 +1,19 @@
+.jumbotron{
+    background-color: #669cd1;
+}
+hr{color:gray;}
+.row{margin-left:2px;}
+/* bootstrap classes not working to hide in mobile */
+.footerClass{background-color: rgb(167, 167, 167);}
+@media (max-width:1024px) {
+    .d-mobile-none {
+    display:none !important;
+    }
+    body{padding:2px;}
+  }
+
+  @media (min-width:1024px) {  .d-mobile-none {
+    display:block !important;
+    } }
+ 
+  
