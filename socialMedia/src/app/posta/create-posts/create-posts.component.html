@@ -1,0 +1,18 @@
+<main class="container-fluid">
+    <form [formGroup]="createPost" (ngSubmit)="submit($event)">
+        <label>Post title:</label>
+        <input type='text' formControlName=title>
+        <label>Post Description:</label>
+        <textarea formControlName="description"></textarea>
+        <button type='submit'>Create Post</button>
+    </form>
+<div>
+    <div class="card" style="width: 18rem;" *ngFor="let post of Posts">
+      
+        <div class="card-body">
+            <h5 class="card-title">{{post.postTitle}}</h5>
+            <p class="card-text">{{post.postDescription}}</p>
+        </div>
+    </div>
+</div>
+</main>
