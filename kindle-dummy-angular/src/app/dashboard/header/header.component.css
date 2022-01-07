@@ -1,0 +1,14 @@
+.searchInput{margin-left: 69%;
+    display: flex;}
+    mat-toolbar{
+        background-color: goldenrod;
+    }
+    mat-icon{
+     cursor: pointer;
+    }
+    .signUp{background-color: white;
+    color:black;
+font-weight: bold;
+cursor: pointer;
+
+}

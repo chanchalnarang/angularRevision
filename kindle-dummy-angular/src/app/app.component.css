@@ -1,0 +1,11 @@
+.actions{
+    right: 104px;
+    position: absolute;
+    top: 23px;
+}
+.imageSpan{position: fixed;
+    top: 62px;
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    height: 100%;}

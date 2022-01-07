@@ -1,0 +1,10 @@
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit($event)">
+        <label>Email:</label><br>
+        <input type='email' formControlName="email"><br>
+        <label>Password:</label><br>
+        <input type="text"><br><br>
+        <button type="submit">login</button>
+
+    </form>
+
