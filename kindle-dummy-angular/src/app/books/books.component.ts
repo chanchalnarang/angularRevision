@@ -7,23 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
+  books: any;
   url = 'https://jsonplaceholder.typicode.com/posts';
-  isloggedIn:string|null='false';
-  books:any=[];
-  constructor(private http:HttpClient) { }
- 
+  isLogin: string | null = 'false'
+  constructor(private http: HttpClient) {
+   
+  }
+
   ngOnInit(): void {
-    this.getBooks(this.url)
-    this.isloggedIn = localStorage.getItem('isLogin');
+    this.isLogin = localStorage.getItem('valid');
+    if (this.isLogin == 'true') { if(this.books.length===0){this.getBooks(this.url);}else{console.log(this.books,'ngOninit line19')} } else { this.books = [] }
+
+  }
+  getBooks(url: any) {
+
+    this.http.get(url).subscribe(res => { this.books = res }, err => console.log(err))
+    console.log(this.books)
   }
   ngAfterViewChecked(){
-    this.isloggedIn = localStorage.getItem('isLogin');
-  }
-  async getBooks(url: string) {
-     this.isloggedIn = localStorage.getItem('isLogin');
-    if (this.isloggedIn=='true') {
-    await  this.http.get(url).subscribe(res => { this.books = res });
-  
-    }
+    console.log('ngoninit called again in line 28')
+    this.ngOnInit()
   }
 }

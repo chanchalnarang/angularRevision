@@ -1,6 +1,6 @@
-<span >
+<p>books works!</p>
+<div *ngIf="books?.length>0">
     <ol>
-        <li *ngFor="let book of books"><a href='#'>{{book.title}}</a></li>
-    </ol>
-  
-</span>
+<li *ngFor="let book of books">{{book.title}}</li></ol>
+</div>
+<div  *ngIf="books?.length==0">kindly Login  to view books list</div>

@@ -10,47 +10,39 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class LoginComponent implements OnInit {
   books: any;
-  isLoggedin:string|null='false';
+  isLoggedin: string | null = 'false';
+  ValidUsers: any = []
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   })
-  constructor(private dialog: MatDialog, private http: HttpClient) { }
-  setisLogin(res: any) {
- 
-    let userData: any = Object.values(res);
-    for (let user of userData) {
-      if (user.email == this.loginForm.controls.email.value) {
-        console.log('user already exist');
-        localStorage.setItem('isLogin', 'true');
-     
-       
-console.log(this.books);
-        return;
-      }
-      else {
-        console.log('signup please');
-        localStorage.setItem('isLogin', 'false');
-        return;
-      }
-
-    }
-  }
-  submit(event: any) {
-    event?.preventDefault();
-    this.isLoggedin=localStorage.getItem('isLogin');
-    let res = this.http.get('https://kindle-dummy-default-rtdb.firebaseio.com/registeredUsers.json');
-    localStorage.setItem('isLogin','true');
-    res.subscribe(data => { console.log(data); this.setisLogin(data) }, err => { console.log(err) })
-  this.dialog.closeAll();
-   
-
-
+  constructor(private dialog: MatDialog, private http: HttpClient) {
+    let url = 'https://jsonplaceholder.typicode.com/users';
+    this.getUsers(url)
 
   }
- 
+  getUsers(url: string) {
+    this.http.get(url).subscribe((res) => { this.ValidUsers = res; this.checkValidUser(this.ValidUsers) }, err => { console.log(err) })
+  }
   ngOnInit(): void {
 
   }
+  checkValidUser(users: any) {
+    console.log(users);
+    for (let user of users) {
+      let emailinput= this.loginForm.controls.email.value;
+      
+      if (user.email ==emailinput) {
+        localStorage.setItem('valid', 'true');
+        return;
+      }
+      else { localStorage.setItem('valid', 'false'); }
+    }
 
+  }
+  submit(event: any) {
+    event.preventDefault();
+    this.checkValidUser(this.ValidUsers)
+    this.dialog.closeAll()
+  }
 }
