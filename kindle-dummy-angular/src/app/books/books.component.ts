@@ -16,7 +16,7 @@ export class BooksComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogin = localStorage.getItem('valid');
-    if (this.isLogin == 'true') { if(this.books.length===0){this.getBooks(this.url);}else{console.log(this.books,'ngOninit line19')} } else { this.books = [] }
+    if (this.isLogin == 'true') { if(this.books?.length===0){this.getBooks(this.url);}else{console.log(this.books,'ngOninit line19')} } else { this.books = [] }
 
   }
   getBooks(url: any) {
