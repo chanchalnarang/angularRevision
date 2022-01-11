@@ -1,0 +1,14 @@
+<mat-toolbar>
+    <span>Welcome to Narangs Hotels</span>
+
+</mat-toolbar>
+<nav mat-tab-nav-bar >
+    <a mat-tab-link 
+       (click)="login($event)"
+     >login </a>
+    <a mat-tab-link  (click)="hotels($event)">Restuarants</a>
+  </nav>
+  <router-outlet></router-outlet>
+
+
+ 

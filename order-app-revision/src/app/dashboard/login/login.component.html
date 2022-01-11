@@ -1,0 +1,14 @@
+<form [formGroup]="loginForm" (ngSubmit)="login($event)">
+
+    <mat-label>email</mat-label>
+    <input type='email' matInput formControlName="email">   <br>
+ 
+
+    <mat-label>password</mat-label>
+    <input type='password' matInput formControlName="password"><br>
+
+
+    <button type='submit' mat-button color="primary">login</button>
+
+
+</form>
